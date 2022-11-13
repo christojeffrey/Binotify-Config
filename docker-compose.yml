@@ -1,0 +1,33 @@
+version: "3.8"
+services:
+  binotify_app_frontend:
+    container_name: binotify_app_frontend
+    image: christojeffrey/wbd-tubes-2-binotify-app-frontend:1.0
+    build:
+      context: ./
+      dockerfile: dockerfiles/binotify_app_frontend.Dockerfile
+    volumes:
+      - ./../Binotify-App/src:/usr/src
+    ports:
+      - 8000:80
+  binotify_app_database:
+    container_name: binotify_app_database
+    image: christojeffrey/wbd-tubes-2-binotify-app-database:1.0
+    build:
+      context: ../
+      dockerfile: Binotify-Config/dockerfiles/binotify_app_database.Dockerfile
+    environment:
+      MYSQL_USER: tubes
+      MYSQL_PASSWORD: tubes
+      MARIADB_ROOT_PASSWORD: root
+      MYSQL_DATABASE: tubes
+    ports:
+      - 8001:3306
+  binotify_app_adminer:
+    container_name: binotify_app_adminer
+    image: adminer:4.8.1
+    environment:
+      ADMINER_DEFAULT_SERVER: mariadb
+    restart: always
+    ports:
+      - 8002:8080
