@@ -31,3 +31,13 @@ services:
     restart: always
     ports:
       - 8002:8080
+  binotify_soap:
+    container_name: binotify_soap
+    image: christojeffrey/wbd-tubes-2-binotify-soap:1.0
+    volumes:
+      - ./../Binotify-SOAP:/usr/src
+    build:
+      context: ../
+      dockerfile: Binotify-Config/dockerfiles/binotify_soap.Dockerfile
+    ports:
+      - 8003:8080

@@ -3,5 +3,4 @@ RUN apt-get update && apt-get install && docker-php-ext-install mysqli && docker
 WORKDIR /usr/src/
 EXPOSE 80
 
-
 CMD ["php","-S", "0.0.0.0:80"]
