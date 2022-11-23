@@ -1,6 +1,5 @@
-FROM openjdk:8-jdk-alpine
+FROM openjdk:8-jdk
 
-RUN apk add --no-cache curl tar bash procps
 
 # Downloading and installing Maven
 ARG MAVEN_VERSION=3.6.3
@@ -17,8 +16,6 @@ RUN mkdir -p /usr/share/maven /usr/share/maven/ref \
   && echo "Cleaning and setting links" \
   && rm -f /tmp/apache-maven.tar.gz \
   && ln -s /usr/share/maven/bin/mvn /usr/bin/mvn
-
-COPY ./Binotify-Config/soaprunner.sh /usr/src/
 
 WORKDIR /usr/src/
 EXPOSE 8080
