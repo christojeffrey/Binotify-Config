@@ -42,3 +42,12 @@ cd ..
 now inside the directory where you run the command, you will see all the repo.
 
 # how to run
+
+# adminer
+
+you can use it to check any database. use container name for the server name.
+
+# reference
+
+the difference between initial and current variable in postman
+https://community.postman.com/t/do-we-have-to-use-initial-variables-from-environment-variables/15796

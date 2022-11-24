@@ -1,36 +1,42 @@
 version: "3.8"
 services:
-  binotify_app_frontend:
-    container_name: binotify_app_frontend
-    image: christojeffrey/wbd-tubes-2-binotify-app-frontend:1.0
-    build:
-      context: ./
-      dockerfile: dockerfiles/binotify_app_frontend.Dockerfile
-    volumes:
-      - ./../Binotify-App/src:/usr/src
-    ports:
-      - 8000:80
-  binotify_app_database:
-    container_name: binotify_app_database
-    image: christojeffrey/wbd-tubes-2-binotify-app-database:1.0
+  # binotify_app_frontend:
+  #   container_name: binotify_app_frontend
+  #   image: christojeffrey/wbd-tubes-2-binotify-app-frontend:1.0
+  #   build:
+  #     context: ./
+  #     dockerfile: dockerfiles/binotify_app_frontend.Dockerfile
+  #   volumes:
+  #     - ./../Binotify-App/src:/usr/src
+  #   ports:
+  #     - 8080:80
+  # binotify_app_database:
+  #   container_name: binotify_app_database
+  #   image: christojeffrey/wbd-tubes-2-binotify-app-database:1.0
+  #   build:
+  #     context: ../
+  #     dockerfile: Binotify-Config/dockerfiles/binotify_app_database.Dockerfile
+  #   environment:
+  #     MYSQL_USER: tubes
+  #     MYSQL_PASSWORD: tubes
+  #     MARIADB_ROOT_PASSWORD: root
+  #     MYSQL_DATABASE: tubes
+  #   ports:
+  #     - 8081:3306
+
+  binotify_soap_database:
+    container_name: binotify_soap_database
+    image: christojeffrey/wbd-tubes-2-binotify-soap-database:1.0
     build:
       context: ../
-      dockerfile: Binotify-Config/dockerfiles/binotify_app_database.Dockerfile
+      dockerfile: Binotify-Config/dockerfiles/binotify_soap_database.Dockerfile
     environment:
       MYSQL_USER: tubes
       MYSQL_PASSWORD: tubes
-      MARIADB_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: tubes
     ports:
-      - 8001:3306
-  binotify_app_adminer:
-    container_name: binotify_app_adminer
-    image: adminer:4.8.1
-    environment:
-      ADMINER_DEFAULT_SERVER: mariadb
-    restart: always
-    ports:
-      - 8002:8080
+      - 8082:3306
   binotify_soap:
     container_name: binotify_soap
     image: christojeffrey/wbd-tubes-2-binotify-soap:1.0
@@ -40,4 +46,57 @@ services:
       context: ../
       dockerfile: Binotify-Config/dockerfiles/binotify_soap.Dockerfile
     ports:
-      - 8003:8080
+      - 8083:8080
+
+  # binotify_rest_database:
+  #   container_name: binotify_rest_database
+  #   image: christojeffrey/wbd-tubes-2-binotify-rest-database:1.0
+  #   build:
+  #     context: ../
+  #     dockerfile: Binotify-Config/dockerfiles/binotify_rest_database.Dockerfile
+  #   environment:
+  #     MYSQL_USER: tubes
+  #     MYSQL_PASSWORD: tubes
+  #     MYSQL_ROOT_PASSWORD: root
+  #     MYSQL_DATABASE: tubes
+  #   volumes:
+  #     - ./rest_database:/var/lib/mysql
+
+  #   ports:
+  #     - 8084:3306
+  #   healthcheck:
+  #     test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+  #     interval: 15s
+  #     timeout: 10s
+  #     retries: 5
+  # binotify_rest:
+  #   container_name: binotify_rest
+  #   image: christojeffrey/wbd-tubes-2-binotify-rest:1.0
+  #   volumes:
+  #     - ./../Binotify-REST:/usr/src
+  #   build:
+  #     context: ../
+  #     dockerfile: Binotify-Config/dockerfiles/binotify_rest.Dockerfile
+  #   depends_on:
+  #     binotify_rest_database:
+  #       condition: service_healthy
+  #   ports:
+  #     - 8085:3000
+  # binotify_premium:
+  #   container_name: binotify_premium
+  #   image: christojeffrey/wbd-tubes-2-binotify-premium:1.0
+  #   volumes:
+  #     - ./../Binotify-Premium-App:/usr/src
+  #   build:
+  #     context: ../
+  #     dockerfile: Binotify-Config/dockerfiles/binotify_premium.Dockerfile
+  #   ports:
+  #     - 8086:3000
+  # binotify_app_adminer:
+  #   container_name: binotify_app_adminer
+  #   image: adminer:4.8.1
+  #   environment:
+  #     ADMINER_DEFAULT_SERVER: mariadb
+  #   restart: always
+  #   ports:
+  #     - 8087:8080
