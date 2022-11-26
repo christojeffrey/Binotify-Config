@@ -1,0 +1,2 @@
+# ignore everything inside soap_depedencies folder. it's filled with the java dependencies, just download them yourself
+soap_dependencies/
