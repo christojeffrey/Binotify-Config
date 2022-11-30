@@ -20,4 +20,6 @@ RUN mkdir -p /usr/share/maven /usr/share/maven/ref \
 
 WORKDIR /usr/src/
 EXPOSE 8080
-CMD ["/bin/bash","-c","./soaprunner.sh"]
+COPY ./Binotify-SOAP /usr/src/
+RUN mvn clean install
+CMD ["java", "-jar", "./target/webservice-1.0-SNAPSHOT-jar-with-dependencies.jar"]

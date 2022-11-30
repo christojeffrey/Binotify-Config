@@ -1,7 +1,7 @@
-FROM node:19
+FROM node:19-alpine
 WORKDIR /usr/src/
 EXPOSE 3000
-# install vite
+COPY ./Binotify-Premium-App /usr/src/
 RUN npm install -g vite
-EXPOSE 3000
-CMD ["/bin/bash","-c","./premiumrunner.sh"]
+RUN npm install 
+CMD ["npm", "run", "dev"]
