@@ -1,5 +1,7 @@
 FROM node:19
 WORKDIR /usr/src/
+# use root user
+USER root
 EXPOSE 3000
 CMD ["/bin/bash","-c","./restrunner.sh"]
 

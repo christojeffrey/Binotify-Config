@@ -1,5 +1,5 @@
 #NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
-#Sun Nov 27 05:05:53 UTC 2022
-webservice-1.0-SNAPSHOT.jar>=
+#Tue Nov 29 04:06:32 UTC 2022
 webservice-1.0-SNAPSHOT-jar-with-dependencies.jar>=
+webservice-1.0-SNAPSHOT.jar>=
 webservice-1.0-SNAPSHOT.pom>=

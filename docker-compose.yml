@@ -24,30 +24,30 @@ services:
   #   ports:
   #     - 8081:3306
 
-  # binotify_soap_database:
-  #   container_name: binotify_soap_database
-  #   image: christojeffrey/wbd-tubes-2-binotify-soap-database:1.0
-  #   build:
-  #     context: ../
-  #     dockerfile: Binotify-Config/dockerfiles/binotify_soap_database.Dockerfile
-  #   environment:
-  #     MYSQL_USER: tubes
-  #     MYSQL_PASSWORD: tubes
-  #     MYSQL_ROOT_PASSWORD: root
-  #     MYSQL_DATABASE: tubes
-  #   ports:
-  #     - 8082:3306
-  # binotify_soap:
-  #   container_name: binotify_soap
-  #   image: christojeffrey/wbd-tubes-2-binotify-soap:1.0
-  #   volumes:
-  #     - ./../Binotify-SOAP:/usr/src
-  #     - ./soap_depedencies:/root/.m2
-  #   build:
-  #     context: ../
-  #     dockerfile: Binotify-Config/dockerfiles/binotify_soap.Dockerfile
-  #   ports:
-  #     - 8083:8080
+  binotify_soap_database:
+    container_name: binotify_soap_database
+    image: christojeffrey/wbd-tubes-2-binotify-soap-database:1.0
+    build:
+      context: ../
+      dockerfile: Binotify-Config/dockerfiles/binotify_soap_database.Dockerfile
+    environment:
+      MYSQL_USER: tubes
+      MYSQL_PASSWORD: tubes
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: tubes
+    ports:
+      - 8082:3306
+  binotify_soap:
+    container_name: binotify_soap
+    image: christojeffrey/wbd-tubes-2-binotify-soap:1.0
+    volumes:
+      - ./../Binotify-SOAP:/usr/src
+      - ./soap_depedencies:/root/.m2
+    build:
+      context: ../
+      dockerfile: Binotify-Config/dockerfiles/binotify_soap.Dockerfile
+    ports:
+      - 8083:8080
 
   binotify_rest_database:
     container_name: binotify_rest_database
@@ -77,22 +77,22 @@ services:
     build:
       context: ../
       dockerfile: Binotify-Config/dockerfiles/binotify_rest.Dockerfile
-    depends_on:
-      binotify_rest_database:
-        condition: service_healthy
+    # depends_on:
+    #   binotify_rest_database:
+    #     condition: service_healthy
     ports:
       - 8085:3000
 
-  binotify_premium:
-    container_name: binotify_premium
-    image: christojeffrey/wbd-tubes-2-binotify-premium:1.0
-    volumes:
-      - ./../Binotify-Premium-App:/usr/src
-    build:
-      context: ../
-      dockerfile: Binotify-Config/dockerfiles/binotify_premium.Dockerfile
-    ports:
-      - 8086:3000
+  # binotify_premium:
+  #   container_name: binotify_premium
+  #   image: christojeffrey/wbd-tubes-2-binotify-premium:1.0
+  #   volumes:
+  #     - ./../Binotify-Premium-App:/usr/src
+  #   build:
+  #     context: ../
+  #     dockerfile: Binotify-Config/dockerfiles/binotify_premium.Dockerfile
+  #   ports:
+  #     - 8086:3000
 
   binotify_app_adminer:
     container_name: binotify_app_adminer
