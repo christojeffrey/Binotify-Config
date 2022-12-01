@@ -43,6 +43,10 @@ now inside the directory where you run the command, you will see all the repo.
 
 # how to run
 
+```
+docker-compose down && docker-compose up
+```
+
 # adminer
 
 you can use it to check any database. use container name for the server name.
