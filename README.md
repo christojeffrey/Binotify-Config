@@ -1,5 +1,7 @@
 # description
 
+this repo is used to run all the binotify repo using docker.
+
 # setup all binotify repo
 
 run the following command.
@@ -55,3 +57,11 @@ you can use it to check any database. use container name for the server name.
 
 the difference between initial and current variable in postman
 https://community.postman.com/t/do-we-have-to-use-initial-variables-from-environment-variables/15796
+
+# work distribution
+
+| task                            | NIM      |
+| ------------------------------- | -------- |
+| setup docker premium            | 13520055 |
+| setup rest docker with database | 13520055 |
+| setup soap docker with database | 13520055 |
